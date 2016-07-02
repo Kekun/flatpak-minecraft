@@ -1,0 +1,74 @@
+{
+  /* GTK+ is needed by JavaFX. */
+  "app-id": "com.mojang.Minecraft",
+  "runtime": "org.gnome.Platform",
+  "runtime-version": "3.20",
+  "sdk": "org.gnome.Sdk",
+  "command": "minecraft",
+  "finish-args": [
+      "--persist=.minecraft",
+      /* X11 access */
+      "--socket=x11",
+      /* OpenGL access */
+      "--device=dri",
+      /* PulseAudio access */
+      "--socket=pulseaudio",
+      /* Network access */
+      "--share=network"
+  ],
+  "modules": [
+      {
+          /* Needed by Minecraft 1.8.2 and up. */
+          "name": "xrandr",
+          "sources": [
+              {
+                  "type": "git",
+                  "url": "git://anongit.freedesktop.org/xorg/app/xrandr"
+              }
+          ]
+      },
+      {
+          "name": "jre",
+          "no-autogen": true,
+          "sources" : [
+              {
+                  "type": "file",
+                  "url": "http://javadl.oracle.com/webapps/download/AutoDL?BundleId=207765",
+                  "sha256": "66d8971b240bbd03d114308958fff0fb8068d0589122885d9591727e5472137f",
+                  "dest-filename": "jre.tar.gz"
+              },
+              {
+                  "type": "file",
+                  "path": "jre-Makefile",
+                  "dest-filename": "Makefile"
+              }
+          ]
+      },
+      {
+          "name": "minecraft",
+          "no-autogen": true,
+          "sources" : [
+              {
+                  "type": "file",
+                  "url": "http://s3.amazonaws.com/Minecraft.Download/launcher/Minecraft.jar",
+                  "sha256": "e8d90b2637b141b556670d8460d317aadb6e4f2e644e519995c428800b25f212"
+              },
+              {
+                  "type": "file",
+                  "path": "com.mojang.Minecraft.desktop",
+                  "dest-filename": "com.mojang.Minecraft.desktop"
+              },
+              {
+                  "type": "file",
+                  "path": "com.mojang.Minecraft.png",
+                  "dest-filename": "com.mojang.Minecraft.png"
+              },
+              {
+                  "type": "file",
+                  "path": "minecraft-Makefile",
+                  "dest-filename": "Makefile"
+              }
+          ]
+      }
+  ]
+}

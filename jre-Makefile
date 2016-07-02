@@ -1,0 +1,9 @@
+all:
+	true
+
+install:
+	tar -xzf jre.tar.gz -C /app
+	mkdir -p /app/bin
+	mv /app/jre*/bin/java /app/bin
+	mv /app/jre*/lib/* /app/lib
+	rm -Rf /app/jre*

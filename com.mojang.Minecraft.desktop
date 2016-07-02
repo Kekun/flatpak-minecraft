@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Minecraft
+Icon=com.mojang.Minecraft
+Exec=minecraft
+Categories=Game;

@@ -1,0 +1,32 @@
+MINECRAFT_JAR=Minecraft.jar
+INSTALLED_MINECRAFT_JAR=/app/share/minecraft/$(MINECRAFT_JAR)
+INSTALLED_MINECRAFT=/app/bin/minecraft
+INSTALLED_DESKTOP=/app/share/applications/com.mojang.Minecraft.desktop
+INSTALLED_ICON=/app/share/icons/hicolor/256x256/apps/com.mojang.Minecraft.png
+
+define MINECRAFT_CONTENT :=
+#!/bin/sh
+java -jar $(INSTALLED_MINECRAFT_JAR)
+endef
+
+all:
+	true
+
+$(INSTALLED_MINECRAFT_JAR):
+	mkdir -p $(@D)
+	cp $(@F) $(@D)
+
+$(INSTALLED_MINECRAFT):
+	mkdir -p $(@D)
+	$(file > $(@),$(MINECRAFT_CONTENT))
+
+$(INSTALLED_DESKTOP):
+	mkdir -p $(@D)
+	cp $(@F) $@
+
+$(INSTALLED_ICON):
+	mkdir -p $(@D)
+	cp $(@F) $@
+
+install: $(INSTALLED_MINECRAFT_JAR) $(INSTALLED_MINECRAFT) $(INSTALLED_DESKTOP) $(INSTALLED_ICON)
+
