@@ -59,7 +59,7 @@ prepare-install:
 	flatpak $(USER) remote-add --no-gpg-verify $(INSTALL_REPO) $(REPO)
 
 install:
-	flatpak $(USER) install $(INSTALL_REPO) $(ID)
+	flatpak $(USER) install --bundle $(BUNDLE)
 
 uninstall:
 	flatpak $(USER) uninstall $(ID)
