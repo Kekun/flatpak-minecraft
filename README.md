@@ -13,3 +13,13 @@ To build `minecraft.flatpak`:
 ```
 make
 ```
+
+To install it:
+```
+make install
+```
+
+To uninstall it:
+```
+make uninstall
+```
