@@ -4,20 +4,12 @@ A small tool to automatially bundle Minecraft as a flatpak.
 
 ## Usage
 
-You may need to prepare the build by running these commands, you have to run each of these only once:
+You will need the `gnome` repository, if you don't already have it you can install it with:
 ```
 make install-sdk-repo
 ```
 
-```
-make install-runtime
-```
-
-```
-make install-sdk
-```
-
-To build the flatpak, simply run:
+To build `minecraft.flatpak`:
 ```
 make
 ```
