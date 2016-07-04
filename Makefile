@@ -24,15 +24,19 @@ BUILD_DEPS= \
 	minecraft-Makefile \
 	$(NULL)
 
+define GITIGNORE_CONTENT :=
+.gitignore
+.flatpak-builder
+$(BUNDLE)
+$(SDK_KEY)
+$(BUILD_DIR)
+$(REPO)
+endef
+
 all: .gitignore $(BUNDLE)
 
 .gitignore:
-	echo ".gitignore" > $@
-	echo "$(BUNDLE)" >> $@
-	echo "$(SDK_KEY)" >> $@
-	echo "$(BUILD_DIR)" >> $@
-	echo "$(REPO)" >> $@
-	echo ".flatpak-builder" >> $@
+	$(file > $(@),$(GITIGNORE_CONTENT))
 
 $(SDK_KEY):
 	wget $(SDK_KEY_URL)
