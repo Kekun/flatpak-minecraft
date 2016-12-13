@@ -52,8 +52,8 @@ install-runtime:
 install-sdk:
 	flatpak $(USER) install $(SDK_REPO) $(SDK) $(VERSION) || flatpak $(USER) update $(SDK) $(VERSION)
 
-build: $(BUILD_DEPS) install-runtime install-sdk clean-build
-	flatpak-builder --repo=$(REPO) $(BUILD_DIR) $(MANIFEST)
+build: $(BUILD_DEPS) install-runtime install-sdk
+	flatpak-builder --force-clean --repo=$(REPO) $(BUILD_DIR) $(MANIFEST)
 
 $(BUNDLE): build
 	flatpak build-bundle $(REPO) $(BUNDLE) $(ID)
