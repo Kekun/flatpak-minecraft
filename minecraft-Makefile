@@ -4,6 +4,7 @@ INSTALLED_MINECRAFT_JAR=/app/extra/$(MINECRAFT_JAR)
 INSTALLED_MINECRAFT=/app/bin/minecraft
 INSTALLED_DESKTOP=/app/share/applications/com.mojang.Minecraft.desktop
 INSTALLED_ICON=/app/share/icons/hicolor/256x256/apps/com.mojang.Minecraft.png
+INSTALLED_APPDATA=/app/share/appdata/com.mojang.Minecraft.appdata.xml
 
 define MINECRAFT_CONTENT :=
 #!/bin/sh
@@ -25,4 +26,8 @@ $(INSTALLED_ICON):
 	mkdir -p $(@D)
 	cp $(@F) $@
 
-install: $(INSTALLED_MINECRAFT) $(INSTALLED_DESKTOP) $(INSTALLED_ICON)
+$(INSTALLED_APPDATA):
+	mkdir -p $(@D)
+	cp $(@F) $@
+
+install: $(INSTALLED_MINECRAFT) $(INSTALLED_DESKTOP) $(INSTALLED_ICON) $(INSTALLED_APPDATA)

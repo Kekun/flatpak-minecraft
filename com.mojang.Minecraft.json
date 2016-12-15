@@ -63,6 +63,10 @@
                   "type": "file",
                   "path": "minecraft-Makefile",
                   "dest-filename": "Makefile"
+              },
+              {
+                  "type": "file",
+                  "path": "com.mojang.Minecraft.appdata.xml"
               }
           ]
       }
