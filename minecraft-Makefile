@@ -1,8 +1,10 @@
 MINECRAFT_JAR=Minecraft.jar
-INSTALLED_MINECRAFT_JAR=/app/share/minecraft/$(MINECRAFT_JAR)
+# /app/extra is where the minecraft jar file will be downloaded
+INSTALLED_MINECRAFT_JAR=/app/extra/$(MINECRAFT_JAR)
 INSTALLED_MINECRAFT=/app/bin/minecraft
 INSTALLED_DESKTOP=/app/share/applications/com.mojang.Minecraft.desktop
 INSTALLED_ICON=/app/share/icons/hicolor/256x256/apps/com.mojang.Minecraft.png
+INSTALLED_APPDATA=/app/share/appdata/com.mojang.Minecraft.appdata.xml
 
 define MINECRAFT_CONTENT :=
 #!/bin/sh
@@ -11,10 +13,6 @@ endef
 
 all:
 	true
-
-$(INSTALLED_MINECRAFT_JAR):
-	mkdir -p $(@D)
-	cp $(@F) $(@D)
 
 $(INSTALLED_MINECRAFT):
 	mkdir -p $(@D)
@@ -28,5 +26,8 @@ $(INSTALLED_ICON):
 	mkdir -p $(@D)
 	cp $(@F) $@
 
-install: $(INSTALLED_MINECRAFT_JAR) $(INSTALLED_MINECRAFT) $(INSTALLED_DESKTOP) $(INSTALLED_ICON)
+$(INSTALLED_APPDATA):
+	mkdir -p $(@D)
+	cp $(@F) $@
 
+install: $(INSTALLED_MINECRAFT) $(INSTALLED_DESKTOP) $(INSTALLED_ICON) $(INSTALLED_APPDATA)
